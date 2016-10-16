@@ -53,6 +53,6 @@
 }, merge=salt['grains.filter_by']({
     'trusty': {
         'libvirt_bin': '/etc/default/libvirt-bin',
-        'libvirt_service': 'libvirt-bin',
+        'libvirt_service': 'libvirtd',
     },
 }, grain='oscodename', merge=pillar.nova.get('compute', {}))) %}
