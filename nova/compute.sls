@@ -29,13 +29,10 @@ vm.swappiness:
     - service: nova_compute_services
 {%- endif %}
 
-{%- if not salt['group.info']('libvirtd') %}
 group_libvirtd:
   group.present:
     - name: libvirtd
-{%- endif %}
 
-{%- if not salt['user.info']('nova') %}
 user_nova:
   user.present:
   - name: nova
@@ -66,7 +63,6 @@ group_nova:
     - system: True
     - require_in:
       - user: user_nova
-{%- endif %}
 
 {%- if compute.user is defined %}
 
